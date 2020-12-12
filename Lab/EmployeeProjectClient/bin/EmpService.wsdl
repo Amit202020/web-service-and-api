@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://pp" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://pp" xmlns:intf="http://pp" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://pp" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="selectEmpById">
+    <complexType>
+     <sequence>
+      <element name="empId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="selectEmpByIdResponse">
+    <complexType>
+     <sequence>
+      <element name="selectEmpByIdReturn" type="impl:Employee"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Employee">
+    <sequence>
+     <element name="empEmail" nillable="true" type="xsd:string"/>
+     <element name="empId" nillable="true" type="xsd:string"/>
+     <element name="empName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="selectEmpByIdResponse">
+
+      <wsdl:part element="impl:selectEmpByIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="selectEmpByIdRequest">
+
+      <wsdl:part element="impl:selectEmpById" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EmpService">
+
+      <wsdl:operation name="selectEmpById">
+
+         <wsdl:input message="impl:selectEmpByIdRequest" name="selectEmpByIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:selectEmpByIdResponse" name="selectEmpByIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EmpServiceSoapBinding" type="impl:EmpService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="selectEmpById">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="selectEmpByIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="selectEmpByIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EmpServiceService">
+
+      <wsdl:port binding="impl:EmpServiceSoapBinding" name="EmpService">
+
+         <wsdlsoap:address location="http://localhost:8082/EmployeeProject/services/EmpService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

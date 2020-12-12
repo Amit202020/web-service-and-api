@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://pp" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://pp" xmlns:intf="http://pp" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://pp" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="calculatorEMI">
+    <complexType>
+     <sequence>
+      <element name="p" type="xsd:double"/>
+      <element name="r" type="xsd:double"/>
+      <element name="t" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calculatorEMIResponse">
+    <complexType>
+     <sequence>
+      <element name="calculatorEMIReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getHello">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getHelloResponse">
+    <complexType>
+     <sequence>
+      <element name="getHelloReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="calculatorEMIResponse">
+
+      <wsdl:part element="impl:calculatorEMIResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHelloRequest">
+
+      <wsdl:part element="impl:getHello" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHelloResponse">
+
+      <wsdl:part element="impl:getHelloResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calculatorEMIRequest">
+
+      <wsdl:part element="impl:calculatorEMI" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Calculation">
+
+      <wsdl:operation name="calculatorEMI">
+
+         <wsdl:input message="impl:calculatorEMIRequest" name="calculatorEMIRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:calculatorEMIResponse" name="calculatorEMIResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHello">
+
+         <wsdl:input message="impl:getHelloRequest" name="getHelloRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getHelloResponse" name="getHelloResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CalculationSoapBinding" type="impl:Calculation">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="calculatorEMI">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calculatorEMIRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calculatorEMIResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getHello">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getHelloRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getHelloResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CalculationService">
+
+      <wsdl:port binding="impl:CalculationSoapBinding" name="Calculation">
+
+         <wsdlsoap:address location="http://localhost:8082/EMIProject/services/Calculation"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
